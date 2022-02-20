@@ -1,5 +1,4 @@
-import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { identity } from 'rxjs';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 
 @Controller('movies')
 export class MoviesController {
@@ -13,7 +12,7 @@ export class MoviesController {
     getOne(
         @Param("id") movieId:string,
     ){
-        return `this will return one movie with the id = ${movieId}`
+        return `this will return one movie with the id: ${movieId}`
     }
 
     @Post()
@@ -25,13 +24,13 @@ export class MoviesController {
     remove(
         @Param("id") movieId:string,
     ){
-        return `this remove one movie with the id = ${movieId}`
+        return `this remove one movie with the id: ${movieId}`
     }
     // patch는 일부분, put은 전체 업데이트
     @Patch("/:id")
     update(
         @Param("id") movieId:string,
     ){
-        return `this update one movie with the id = ${movieId}`
+        return `this update one movie with the id: ${movieId}`
     }
 }
