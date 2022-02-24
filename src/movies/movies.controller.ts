@@ -4,7 +4,8 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 export class MoviesController {
 
     @Get()
-    getAll(){
+    getAll(
+){
         return "this will return all movies"
     }
 
@@ -16,8 +17,8 @@ export class MoviesController {
     }
 
     @Post()
-    createMovie(){
-        return "this will create movies"
+    createMovie(@Body() movieData){
+        return movieData;
     }
 
     @Delete("/:id")
@@ -30,7 +31,11 @@ export class MoviesController {
     @Patch("/:id")
     update(
         @Param("id") movieId:string,
+        @Body() movieData
     ){
-        return `this update one movie with the id: ${movieId}`
+        return {
+            movieData: movieId,
+            ...movieData
+        }
     }
 }
