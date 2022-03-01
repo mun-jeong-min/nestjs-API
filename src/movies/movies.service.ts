@@ -9,6 +9,10 @@ export class MoviesService {
         @InjectRepository(Movie) private movieRepository: Repository<Movie>,
     ) {}
 
+    public async createMovie(): Promise<void>{
+        
+    }
+
     public async getAll(): Promise<Movie[]> {
         return await this.movieRepository.find();
     }

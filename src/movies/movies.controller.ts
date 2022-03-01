@@ -6,6 +6,11 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
     constructor(private readonly MovieService:MoviesService) {}
 
+    @Post()
+    public async createMovie(@Body() movieData){
+        return movieData;
+    }
+
     @Get()
     public async getAll():Promise<Movie[]>{
         return await this.MovieService.getAll();
@@ -21,11 +26,6 @@ export class MoviesController {
         @Param("id") movieId:string,
     ){
         return `this will return one movie with the id: ${movieId}`
-    }
-
-    @Post()
-    createMovie(@Body() movieData){
-        return movieData;
     }
 
     @Delete("/:id")
