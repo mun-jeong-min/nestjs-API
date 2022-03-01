@@ -8,7 +8,7 @@ export class MoviesController {
 
     @Post()
     public async createMovie(@Body() movieData){
-        return movieData;
+        await this.MovieService.createMovie(movieData);
     }
 
     @Get()

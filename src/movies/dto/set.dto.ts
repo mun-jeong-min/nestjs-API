@@ -1,11 +1,15 @@
-import { isNotEmpty, isNumber, isString } from "class-validator";
+import { IsNotEmpty, isNotEmpty, IsNumber, isNumber, IsString, isString } from "class-validator";
 
 export class setDto {
-    @isString()
-    @isNotEmpty()
+    @IsString()
+    @IsNotEmpty()
     title:string;
 
-    @isNumber()
-    @isNotEmpty()
+    @IsNumber()
+    @IsNotEmpty()
     year:number;
+
+    @IsString()
+    @IsNotEmpty()
+    genres:string[];
 }
