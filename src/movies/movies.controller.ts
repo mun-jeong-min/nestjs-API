@@ -22,10 +22,10 @@ export class MoviesController {
     }
 
     @Get("/:id")
-    getOne(
-        @Param("id") movieId:string,
+    public async getOne(
+        @Param("id") movieId:number,
     ){
-        return `this will return one movie with the id: ${movieId}`
+        return await this.MovieService.getOne(movieId);
     }
 
     @Delete("/:id")

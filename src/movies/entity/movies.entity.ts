@@ -12,5 +12,5 @@ export class Movie {
     year:number
 
     @Column()
-    genres:string[]
+    genres:string
 }

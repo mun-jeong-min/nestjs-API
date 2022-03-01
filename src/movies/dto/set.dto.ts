@@ -11,5 +11,5 @@ export class setDto {
 
     @IsString()
     @IsNotEmpty()
-    genres:string[];
+    genres:string;
 }

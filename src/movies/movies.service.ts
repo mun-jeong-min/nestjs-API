@@ -23,4 +23,8 @@ export class MoviesService {
     public async getAll(): Promise<Movie[]> {
         return await this.movieRepository.find();
     }
+
+    public async getOne(id:number): Promise<Movie> {
+        return await this.movieRepository.findOne(id);
+    }
 }
