@@ -1,10 +1,22 @@
 import { Module } from '@nestjs/common';
-import { MoviesController } from './movies/movies.controller';
-import { MoviesService } from './movies/movies.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MoviesModule } from './movies/movies.module';
+import * as dotenv from 'dotenv'
+dotenv.config();
 
 @Module({
-  imports: [],
-  controllers: [MoviesController],
-  providers: [MoviesService],
+  imports: [MoviesModule,
+    TypeOrmModule.forRoot({
+    type: 'mysql',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+      entities: [],
+      synchronize: true,
+  }), MoviesModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

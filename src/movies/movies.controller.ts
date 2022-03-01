@@ -31,7 +31,7 @@ export class MoviesController {
         @Param("id") movieId:string,
     ){
         return `this remove one movie with the id: ${movieId}`
-    }
+    }x  
     // patch는 일부분, put은 전체 업데이트
     @Patch("/:id")
     update(
