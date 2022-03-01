@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Movie } from './entity/movies.entity';
+import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
+    constructor(private readonly MovieService:MoviesService) {}
 
     @Get()
-    getAll(
-){
-        return "this will return all movies"
+    public async getAll():Promise<Movie[]>{
+        return await this.MovieService.getAll();
     }
 
     @Get('search')
