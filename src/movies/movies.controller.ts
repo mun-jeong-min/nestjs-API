@@ -7,18 +7,13 @@ export class MoviesController {
     constructor(private readonly MovieService:MoviesService) {}
 
     @Post()
-    public async createMovie(@Body() movieData){
+    public async createMovie(@Body() movieData) {
         await this.MovieService.createMovie(movieData);
     }
 
     @Get()
-    public async getAll():Promise<Movie[]>{
+    public async getAll(): Promise<Movie[]> {
         return await this.MovieService.getAll();
-    }
-
-    @Get('search')
-    getSearch(@Query('year') findSearch:string){
-        return `return year: ${findSearch}`
     }
 
     @Get("/:id")
@@ -28,12 +23,18 @@ export class MoviesController {
         return await this.MovieService.getOne(movieId);
     }
 
+    @Get('/year')
+    public async getYear(@Query('year') year:number)
+    {
+        return `${year}`;
+    }
+
     @Delete("/:id")
     remove(
         @Param("id") movieId:string,
     ){
         return `this remove one movie with the id: ${movieId}`
-    }x  
+    }
     // patch는 일부분, put은 전체 업데이트
     @Patch("/:id")
     update(
@@ -43,6 +44,6 @@ export class MoviesController {
         return {
             movieData: movieId,
             ...movieData
-        }
+        }        
     }
 }

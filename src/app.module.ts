@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MoviesModule } from './movies/movies.module';
 import * as dotenv from 'dotenv'
 import { Movie } from './movies/entity/movies.entity';
+import { AuthModule } from './auth/auth.module';
 dotenv.config();
 
 @Module({
@@ -16,7 +17,8 @@ dotenv.config();
       database: process.env.DB_DATABASE,
       entities: [Movie],
       synchronize: true,
-  })],
+  }),
+    AuthModule],
   controllers: [],
   providers: [],
 })
