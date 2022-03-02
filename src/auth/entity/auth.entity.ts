@@ -11,6 +11,6 @@ export class Auth {
     @Column()
     password:string;
 
-    @Column()
+    @Column({unique:true})
     username:string;
 }

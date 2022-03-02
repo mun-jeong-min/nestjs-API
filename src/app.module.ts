@@ -4,6 +4,7 @@ import { MoviesModule } from './movies/movies.module';
 import * as dotenv from 'dotenv'
 import { Movie } from './movies/entity/movies.entity';
 import { AuthModule } from './auth/auth.module';
+import { Auth } from './auth/entity/auth.entity';
 dotenv.config();
 
 @Module({
@@ -15,7 +16,7 @@ dotenv.config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Movie],
+      entities: [Movie, Auth],
       synchronize: true,
   }),
     AuthModule],
