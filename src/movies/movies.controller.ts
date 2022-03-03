@@ -20,34 +20,27 @@ export class MoviesController {
     }
     
     @UseGuards(AuthGuard())
-    @Get("/:id")
+    @Get("getOne/:id")
     public async getOne(
         @Param("id") movieId:number,
     ){
         return await this.MovieService.getOne(movieId);
     }
 
-    @Get('/year')
-    public async getYear(@Query('year') year:number)
-    {
-        return `${year}`;
-    }
-
-    @Delete("/:id")
-    remove(
-        @Param("id") movieId:string,
+    @Delete("delete/:id")
+    async remove(
+        @Param("id") movieId:number,
     ){
-        return `this remove one movie with the id: ${movieId}`
+        return await this.MovieService.delete(movieId);
     }
+    
     // patch는 일부분, put은 전체 업데이트
-    @Patch("/:id")
-    update(
-        @Param("id") movieId:string,
-        @Body() movieData
-    ){
-        return {
-            movieData: movieId,
-            ...movieData
-        }        
+    @Patch("update/:id")
+    async update(
+        @Param("id") movieId:number,
+        @Body() movie:Movie,
+    )
+    {
+        return await this.MovieService.update(movieId, movie);
     }
 }

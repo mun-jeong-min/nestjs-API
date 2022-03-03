@@ -27,4 +27,12 @@ export class MoviesService {
     public async getOne(id:number): Promise<Movie> {
         return await this.movieRepository.findOne(id);
     }
+
+    public async delete(id:number): Promise<void> {
+        await this.movieRepository.delete(id);
+    }
+
+    public async update(id:number, movie: Movie): Promise<void> {
+        await this.movieRepository.update(id, movie)
+    }
 }
