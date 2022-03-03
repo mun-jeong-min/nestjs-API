@@ -27,6 +27,7 @@ export class MoviesController {
         return await this.MovieService.getOne(movieId);
     }
 
+    @UseGuards(AuthGuard())
     @Delete("delete/:id")
     async remove(
         @Param("id") movieId:number,
@@ -34,6 +35,7 @@ export class MoviesController {
         return await this.MovieService.delete(movieId);
     }
     
+    @UseGuards(AuthGuard())
     // patch는 일부분, put은 전체 업데이트
     @Patch("update/:id")
     async update(
